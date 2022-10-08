@@ -138,9 +138,8 @@ namespace VendingMachinery.Data
                 int offset = i + 1;
                 Console.WriteLine(head1.PadLeft(offset, ' ') + "");    
                                   
-                Thread.Sleep(5);
+                Thread.Sleep(150);
             }
-
         }
     }
 }
