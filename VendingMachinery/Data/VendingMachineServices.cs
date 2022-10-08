@@ -76,7 +76,7 @@ namespace VendingMachinery.Data
         }
 
         public void ShowAll()
-        {            
+        {
             Console.Clear();
             Console.WriteLine("\n");
             foreach (Product product in VendingMachine.productList)
@@ -117,5 +117,30 @@ namespace VendingMachinery.Data
             throw new NotImplementedException();
         }
 
+        public void Animation()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("   .___________.");
+            Console.WriteLine("   [           ]");
+            Console.WriteLine("   [  V     M  ]");
+            Console.WriteLine("   [  E     A  ]");
+            Console.WriteLine("   [  N     C  ]");
+            Console.WriteLine("   [  D     H  ]");
+            Console.WriteLine("   [  N     I  ]");
+            Console.WriteLine("   [  I     N  ]");
+            Console.WriteLine("      G     E  ]");
+            Console.WriteLine("     __________]");
+            Console.ForegroundColor = ConsoleColor.Green;
+            string head1 = " $ ";      
+            Console.WriteLine(head1);
+            for (int i = 0; i < 20; i++)
+            {
+                int offset = i + 1;
+                Console.WriteLine(head1.PadLeft(offset, ' ') + "");    
+                                  
+                Thread.Sleep(5);
+            }
+
+        }
     }
 }
