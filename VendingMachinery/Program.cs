@@ -41,7 +41,10 @@ namespace VendingMachinery
 
                         case "3":
                             Console.Clear();
-                            Console.WriteLine(string.Format("\tThe total amount to pay: {0} ", PaymentService.SumCart()));
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            vendingMachineServices.ShowBuyList();
+                            Console.WriteLine(string.Format("\n\n\n\tThe total amount to pay: {0} ", PaymentService.SumCart()));
+                            Console.ResetColor();
                             break;
 
                         case "4":
@@ -51,7 +54,10 @@ namespace VendingMachinery
 
                         case "5":
                             Console.Clear();
-                            vendingMachineServices.EndTransaction();
+                            Console.ForegroundColor = ConsoleColor.Green;                           
+                            Console.WriteLine(string.Format("\n\n\n\tThe total amount you get back is: {0} ", PaymentService.EndTransaction()));
+                            PaymentService.moneyPool = 0;
+                            Console.ResetColor();
                             break;
 
                         case "6":

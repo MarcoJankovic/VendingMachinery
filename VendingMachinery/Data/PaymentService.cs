@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace VendingMachinery.Data
             }
             else
             {
-                PaymentService.message = " Wrong input value!";
+                PaymentService.message = "\n\n\tWrong input value!";
             }
         }
 
@@ -53,7 +54,8 @@ namespace VendingMachinery.Data
                             int index = cartList.FindIndex(i => i.Id == item.Id);
                             if (index >= 0)
                             {
-                                cartList[index].Stock += 1;
+
+                                cartList[index].Stock ++;
                                 cartList[index].Price *= cartList[index].Stock;
                             }
                             else
@@ -66,30 +68,33 @@ namespace VendingMachinery.Data
                             cartList.Add(new CartItem(item.Name, item.Price, item.Id, item.Type, 1));
                         }
 
-                        VendingMachine.productList[id - 1].Stock--;
+                        VendingMachine.productList[id - 1].Stock --;
                         PaymentService.moneyPool -= VendingMachine.productList[id - 1].Price;
                         PaymentService.isValid = true;
-
                     }
                 }
-
-                else
+                else 
                 {
-                    PaymentService.message = " Sold Out!";
+                    PaymentService.message = "\n\n\tSold Out!";
                     PaymentService.isValid = false;
                 }
             }
             else
             {
-                PaymentService.message = " You don't have enough money for this product!";
+                PaymentService.message = "\n\n\tYou don't have enough money for this product!";
                 PaymentService.isValid = false;
             }
-
         }
 
         public static double SumCart()
         {
             return cartList.Sum(i => i.Price);
+        }
+
+        public static double EndTransaction()
+        {
+            moneyPool += cartList.Sum(i => i.Price);
+            return moneyPool - cartList.Sum(i => i.Price);
         }
     }
 }
