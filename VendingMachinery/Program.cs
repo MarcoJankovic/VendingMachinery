@@ -59,6 +59,10 @@ namespace VendingMachinery
                             vendingMachineServices.ShowAll();
                             break;
 
+                        case "7":
+                            run = false;                            
+                            break;
+
                         default:
                             vendingMachineServices.PrintMenu();
                             break;

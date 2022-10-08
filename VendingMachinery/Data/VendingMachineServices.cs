@@ -13,13 +13,14 @@ namespace VendingMachinery.Data
     {
         public void PrintMenu()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("\n\tChoose one of the options: ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n\tMoney: {PaymentService.moneyPool}" + (PaymentService.isValid == true ? "" : PaymentService.message));
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n\t1 - Add a product to buy-list.");
             Console.WriteLine("\t2 - Show buy-list.");
-            Console.WriteLine("\t3 - Calculate all goods.");
+            Console.WriteLine("\t3 - Calculate goods in buy-list.");
             Console.WriteLine("\t4 - Insert money.");
             Console.WriteLine("\t5 - Finalize.");
             Console.WriteLine("\t6 - Show inventory.");
@@ -34,8 +35,8 @@ namespace VendingMachinery.Data
             Console.WriteLine("\n\tChoose one of the options: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n\tMoney: {PaymentService.moneyPool}" + (PaymentService.isValid == true ? "" : PaymentService.message));
-            Console.WriteLine("\n\t1 - Pick a product by id to add to cart.");
-            Console.WriteLine("\tPress q to return.");
+            Console.WriteLine("\n\tPick a product by id to add to cart.");
+            Console.WriteLine("\n\n\n\n\tPress q to return.");
         }
 
         public void Purchase()
@@ -72,8 +73,9 @@ namespace VendingMachinery.Data
         }
 
         public void ShowAll()
-        {
+        {            
             Console.Clear();
+            Console.WriteLine("\n");
             foreach (Product product in VendingMachine.productList)
             {
                 Console.WriteLine($"\tId:{product.Id}\t {product.Name}\t Price:{product.Price}\t Quantity: {product.Stock}");
@@ -83,6 +85,7 @@ namespace VendingMachinery.Data
         public void ShowBuyList()
         {
             Console.Clear();
+            Console.WriteLine("\n\t\t---- Buylist ----\n");
             foreach (Product product in PaymentService.cartList)
             {
                 Console.WriteLine($"\tId:{product.Id}\t {product.Name}\t Price:{product.Price}\t Quantity: {product.Stock}");
@@ -96,6 +99,9 @@ namespace VendingMachinery.Data
 
         public void InsertMoney()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n\tYou can only insert 1, 5, 10, 20, 50, 100, 500, 1000: ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("\n\tType the amount of money you want to insert: ");
             PaymentService.moneyInsert = Convert.ToInt32(Console.ReadLine());
             PaymentService.ValidateAmount();
