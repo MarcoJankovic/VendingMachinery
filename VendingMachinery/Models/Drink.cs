@@ -8,7 +8,7 @@ namespace VendingMachinery.Models
 {
     public class Drink : Product
     {
-        public Drink(int canSize, string? name, double price, int id, Type type) : base(name, price, id, type)
+        public Drink(int canSize, string? name, double price, int id, ProductTypeEnum type, int stock) : base(name, price, id, type, stock)
         {
             CanSize = canSize;
         }

@@ -15,13 +15,12 @@ namespace VendingMachinery
         static void Main(string[] args)
         {
             VendingMachineServices vendingMachineServices = new VendingMachineServices();
-          
+
             bool run = true;
             while (run)
             {
                 try
                 {
-                    Console.Clear();
                     Console.WriteLine("\n\t----Vending Machine----\n");
                     vendingMachineServices.PrintMenu();
                     string? input = Console.ReadLine();
@@ -30,18 +29,19 @@ namespace VendingMachinery
                     {
 
                         case "1":
-                            Console.Clear();
                             vendingMachineServices.Purchase();
+                            vendingMachineServices.ShowAll();
+                            Console.Clear();
                             break;
 
                         case "2":
                             Console.Clear();
-                            vendingMachineServices.ShowAll();
+                            vendingMachineServices.ShowBuyList();
                             break;
 
                         case "3":
                             Console.Clear();
-                            vendingMachineServices.Details();
+                            Console.WriteLine(string.Format("\tThe total amount to pay: {0} ", PaymentService.SumCart()));
                             break;
 
                         case "4":
@@ -56,10 +56,11 @@ namespace VendingMachinery
 
                         case "6":
                             Console.Clear();
-                            run = false;
+                            vendingMachineServices.ShowAll();
                             break;
 
                         default:
+                            vendingMachineServices.PrintMenu();
                             break;
                     }
 

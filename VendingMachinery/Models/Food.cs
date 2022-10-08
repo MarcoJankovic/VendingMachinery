@@ -8,7 +8,7 @@ namespace VendingMachinery.Models
 {
     public class Food : Product
     {
-        public Food(string? expirationDate, string? name, double price, int id, Type type) : base(name, price, id, type)
+        public Food(string? expirationDate, string? name, double price, int id, ProductTypeEnum type, int stock) : base(name, price, id, type, stock)
         {
             ExpirationDate = expirationDate;
         }
@@ -18,7 +18,6 @@ namespace VendingMachinery.Models
         {
             return base.Examine() + $"";
         }
-
         public override string Use()
         {
             return "You eat the food, it taste delicious!   mmmhhhh!";

@@ -8,7 +8,7 @@ namespace VendingMachinery.Models
 {
     public class Toy : Product
     {
-        public Toy(int minAge, string? name, double price, int id, Type type) : base(name, price, id, type)
+        public Toy(int minAge, string? name, double price, int id, ProductTypeEnum type, int stock) : base(name, price, id, type, stock)
         {
             MinAge = minAge;
         }

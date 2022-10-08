@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 namespace VendingMachinery.Models
 {
     public abstract class Product
-    {
+    {        
         public string? Name { get; set; }  // Fields
         public double Price { get; set; }
         public int Id { get; set; }
-        public Type Type { get; set; } // Enum
+        public ProductTypeEnum Type { get; set; } // Enum
+        public int Stock { get; set; }
 
-
-        public Product(string? name, double price, int id, Type type)   // Constructor
+        public Product(string? name, double price, int id, ProductTypeEnum type, int stock)   // Constructor
         {
             Name = name;
             Price = price;
             Id = id;
             Type = type;
+            Stock = stock;
         }
 
         public virtual string Examine()
