@@ -96,5 +96,11 @@ namespace VendingMachinery.Data
             moneyPool += cartList.Sum(i => i.Price);
             return moneyPool - cartList.Sum(i => i.Price);
         }
+
+        public static void ClearCart()
+        {
+            moneyPool = 0;
+            cartList.Clear();
+        }
     }
 }

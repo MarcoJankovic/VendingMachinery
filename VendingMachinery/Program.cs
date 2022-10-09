@@ -57,7 +57,7 @@ namespace VendingMachinery
                             vendingMachineServices.Animation();
                             Console.ForegroundColor = ConsoleColor.Green;                           
                             Console.WriteLine(string.Format("\n\n\n\tThe total amount you get back is: {0} ", PaymentService.EndTransaction()));
-                            PaymentService.moneyPool = 0;
+                            PaymentService.ClearCart();
                             Console.ResetColor();
                             break;
 
